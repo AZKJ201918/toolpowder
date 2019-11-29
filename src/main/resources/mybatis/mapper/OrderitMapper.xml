@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.azkj.toolpowder.user.dao.OrderitMapper" >
+  <resultMap id="BaseResultMap" type="com.azkj.toolpowder.user.entity.Orderit" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orderitid" property="orderitid" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderitid, createtime, uuid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orderit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.azkj.toolpowder.user.entity.Orderit" >
+    insert into orderit (id, orderitid, createtime, 
+      uuid)
+    values (#{id,jdbcType=INTEGER}, #{orderitid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{uuid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.azkj.toolpowder.user.entity.Orderit" >
+    insert into orderit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderitid != null" >
+        orderitid,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderitid != null" >
+        #{orderitid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.azkj.toolpowder.user.entity.Orderit" >
+    update orderit
+    <set >
+      <if test="orderitid != null" >
+        orderitid = #{orderitid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.azkj.toolpowder.user.entity.Orderit" >
+    update orderit
+    set orderitid = #{orderitid,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      uuid = #{uuid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

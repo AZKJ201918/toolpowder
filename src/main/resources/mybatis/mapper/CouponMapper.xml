@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.azkj.toolpowder.merchant.dao.CouponMapper" >
+  <resultMap id="BaseResultMap" type="com.azkj.toolpowder.merchant.entity.Coupon" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="robnumber" property="robnumber" jdbcType="INTEGER" />
+    <result column="sale" property="sale" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="doorsill" property="doorsill" jdbcType="INTEGER" />
+    <result column="reduction" property="reduction" jdbcType="INTEGER" />
+    <result column="mid" property="mid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="BIGINT" />
+    <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, number, robnumber, sale, name, doorsill, reduction, mid, status, startTime, endTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from coupon
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from coupon
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.azkj.toolpowder.merchant.entity.Coupon" >
+    insert into coupon (id, number, robnumber, 
+      sale, name, doorsill, 
+      reduction, mid, status, 
+      startTime, endTime)
+    values (#{id,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, #{robnumber,jdbcType=INTEGER}, 
+      #{sale,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{doorsill,jdbcType=INTEGER}, 
+      #{reduction,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{status,jdbcType=BIGINT}, 
+      #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.azkj.toolpowder.merchant.entity.Coupon" >
+    insert into coupon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="robnumber != null" >
+        robnumber,
+      </if>
+      <if test="sale != null" >
+        sale,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="doorsill != null" >
+        doorsill,
+      </if>
+      <if test="reduction != null" >
+        reduction,
+      </if>
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="starttime != null" >
+        startTime,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="robnumber != null" >
+        #{robnumber,jdbcType=INTEGER},
+      </if>
+      <if test="sale != null" >
+        #{sale,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="doorsill != null" >
+        #{doorsill,jdbcType=INTEGER},
+      </if>
+      <if test="reduction != null" >
+        #{reduction,jdbcType=INTEGER},
+      </if>
+      <if test="mid != null" >
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIGINT},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.azkj.toolpowder.merchant.entity.Coupon" >
+    update coupon
+    <set >
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="robnumber != null" >
+        robnumber = #{robnumber,jdbcType=INTEGER},
+      </if>
+      <if test="sale != null" >
+        sale = #{sale,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="doorsill != null" >
+        doorsill = #{doorsill,jdbcType=INTEGER},
+      </if>
+      <if test="reduction != null" >
+        reduction = #{reduction,jdbcType=INTEGER},
+      </if>
+      <if test="mid != null" >
+        mid = #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIGINT},
+      </if>
+      <if test="starttime != null" >
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.azkj.toolpowder.merchant.entity.Coupon" >
+    update coupon
+    set number = #{number,jdbcType=INTEGER},
+      robnumber = #{robnumber,jdbcType=INTEGER},
+      sale = #{sale,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      doorsill = #{doorsill,jdbcType=INTEGER},
+      reduction = #{reduction,jdbcType=INTEGER},
+      mid = #{mid,jdbcType=INTEGER},
+      status = #{status,jdbcType=BIGINT},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

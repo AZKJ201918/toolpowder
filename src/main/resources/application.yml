@@ -1,0 +1,56 @@
+spring:
+  profiles:
+    active: dev
+  resources:
+    static-locations: classpath:static/
+
+---
+server:
+  port: 6666
+
+
+
+spring:
+  profiles: dev
+  transaction:
+    rollback-on-commit-failure: true
+
+
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+---
+
+#logging:
+#  level:
+#    com.shopping.shoppingmall.**.dao : debug
+
+#   activemq:
+#     broker-url: tcp://193.112.60.165:61616
+#     pool:
+#       enabled: false
+
+
+
+
+
+spring:
+  redis:
+    database: 0
+    host: 193.112.60.165
+  cache:
+    type: redis
+    ehcache:
+      config: classpath:ehcache.xml
+  data:
+    solr:
+      host: http://193.112.60.165:8983/solr/test3
+#  activemq:
+#    broker-url: tcp://60.205.215.182:61616
+#    pool:
+#      enabled: false
+
+
+
+
